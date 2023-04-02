@@ -28,11 +28,13 @@ function onFormSubmit(event) {
   event.preventDefault(); // сброс дефолтных настроек браузера (отключаем перезагрузку);
   event.target.reset(); // сброс значений полей при нажатии на кнопку
   localStorage.removeItem(STORAGE_KEY); // удаление ключа из LocalStorage
+  console.log(formData);
+  formData = {};
 }
 
 // 6. Реализация ф-ции populateTextArea с проверкой на падение кода
 function populateTextArea() {
-  const messageJsonParse = localStorage.getItem(STORAGE_KEY);
+  let messageJsonParse = localStorage.getItem(STORAGE_KEY);
   try {
     if (messageJsonParse) { // проверка на Null
       messageJsonParse = JSON.parse(messageJsonParse); // если код валидный (!== null) преобразуем JSON -> JS
